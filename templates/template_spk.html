@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Surat Perintah Kerja (SPK)</title>
+    <style>
+      /* Pengaturan Kertas Cetak A4 */
+      @page {
+        size: A4 portrait;
+        margin: 2cm 2cm 2cm 2cm;
+      }
+
+      * {
+        box-sizing: border-box;
+        /* Memastikan warna background tabel tercetak di PDF */
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      body {
+        font-family: "Calibri", Arial, sans-serif;
+        font-size: 13.5px;
+        line-height: 1.45;
+        color: #000;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Struktur Pembungkus Utama agar Header Berulang Tiap Halaman */
+      .page-layout-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .page-layout-table thead {
+        display: table-header-group;
+      }
+      .page-layout-table tbody {
+        display: table-row-group;
+      }
+
+      /* Kop / Logo Perusahaan */
+      .company-header {
+        padding-bottom: 15px;
+        text-align: left;
+      }
+      .company-header img {
+        max-height: 45px;
+        width: auto;
+      }
+
+      /* Judul Dokumen */
+      .doc-title {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .doc-title h3 {
+        margin: 0;
+        font-size: 15px;
+        font-weight: bold;
+        line-height: 1.35;
+      }
+
+      /* Tabel Nomor & Tanggal */
+      .meta-table {
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+      .meta-table td {
+        padding: 3px 0;
+        vertical-align: top;
+      }
+      .meta-table td.label {
+        width: 85px;
+      }
+      .meta-table td.separator {
+        width: 15px;
+        text-align: center;
+      }
+
+      /* Paragraf Pembuka & Penutup */
+      .intro-text {
+        margin-bottom: 12px;
+        text-align: justify;
+      }
+
+      /* Tabel Para Pihak */
+      .parties-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 18px;
+      }
+      .parties-table th,
+      .parties-table td {
+        border: 1px solid #bfbfbf;
+        padding: 8px 10px;
+        vertical-align: top;
+        text-align: left;
+      }
+      .parties-table th {
+        background-color: #e8eef5;
+        font-weight: bold;
+        width: 50%;
+      }
+      .parties-table td p {
+        margin: 0 0 2px 0;
+      }
+
+      /* Daftar Poin Syarat dan Ketentuan (1 - 10) */
+      .terms-list {
+        margin: 10px 0 18px 0;
+        padding-left: 25px;
+        text-align: justify;
+      }
+      .terms-list li {
+        margin-bottom: 6px;
+        padding-left: 6px;
+      }
+
+      /* Tabel Tanda Tangan Sejajar */
+      .signature-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 25px;
+        page-break-inside: avoid;
+      }
+      .signature-table td {
+        width: 50%;
+        text-align: center;
+        vertical-align: top;
+      }
+      .signature-space {
+        height: 75px;
+      }
+      .signer-name {
+        font-weight: bold;
+        text-decoration: underline;
+        display: inline-block;
+        margin-bottom: 2px;
+      }
+
+      /* Tampilan layar browser sebelum dicetak */
+      @media screen {
+        body {
+          margin: 35px 50px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <table class="page-layout-table">
+      <!-- HEADER YANG BERULANG OTOMATIS DI SETIAP HALAMAN CETAK -->
+      <thead>
+        <tr>
+          <td>
+            <div class="company-header">
+              <img src="Logo-Perusahaan.png" alt="Nama Perusahaan" />
+            </div>
+          </td>
+        </tr>
+      </thead>
+
+      <!-- ISI DOKUMEN UTAMA -->
+      <tbody>
+        <tr>
+          <td>
+            <!-- JUDUL SPK -->
+            <div class="doc-title">
+              <h3>SURAT PERINTAH KERJA (SPK)</h3>
+              <h3>[NAMA PEKERJAAN/PROJECT]</h3>
+            </div>
+
+            <!-- NOMOR & TANGGAL -->
+            <table class="meta-table">
+              <tr>
+                <td class="label">Nomor</td>
+                <td class="separator">:</td>
+                <td>[Nomor SPK diisi]</td>
+              </tr>
+              <tr>
+                <td class="label">Tanggal</td>
+                <td class="separator">:</td>
+                <td>[Tanggal Surat]</td>
+              </tr>
+            </table>
+
+            <!-- PARAGRAF PEMBUKA -->
+            <p class="intro-text">
+              Surat Perintah Kerja ini dibuat dan disepakati oleh Para Pihak
+              sebagai perikatan untuk pelaksanaan pekerjaan tertentu, dengan
+              identitas sebagaimana tercantum di atas.
+            </p>
+
+            <!-- TABEL IDENTITAS PARA PIHAK -->
+            <table class="parties-table">
+              <thead>
+                <tr>
+                  <th>PIHAK PERTAMA</th>
+                  <th>PIHAK KEDUA</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <p>[NAMA PERUSAHAAN]</p>
+                    <p>Diwakili oleh: [Nama Wakil Perusahaan/Direktur]</p>
+                    <p>Jabatan: Direktur</p>
+                    <p>Selanjutnya disebut PIHAK PERTAMA.</p>
+                  </td>
+                  <td>
+                    <p>[NAMA MITRA/TENAGA AHLI]</p>
+                    <p>NIK: [NIK Mitra/Tenaga Ahli]</p>
+                    <p>Alamat: [Alamat Mitra/Tenaga Ahli]</p>
+                    <p>Jabatan: [Jabatan Mitra/Tenaga Ahli]</p>
+                    <p>Selanjutnya disebut PIHAK KEDUA.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    PIHAK PERTAMA dan PIHAK KEDUA secara bersama-sama disebut
+                    PARA PIHAK
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p class="intro-text">
+              Berdasarkan kesepakatan Para Pihak, [Nama Perusahaan] dan PIHAK
+              KEDUA sepakat atas syarat dan ketentuan pekerjaan sebagai berikut:
+            </p>
+
+            <!-- DAFTAR POIN 1 - 10 -->
+            <ol class="terms-list">
+              <li>
+                <strong>Pekerjaan:</strong> PIHAK KEDUA melaksanakan pekerjaan
+                sebagai [Jabatan Mitra/Tenaga Ahli] untuk mendukung Pekerjaan
+                [Nama Pekerjaan/Project], sesuai dengan ruang lingkup, arahan,
+                dan kebutuhan pekerjaan yang ditetapkan atau disepakati oleh
+                PARA PIHAK.
+              </li>
+              <li>
+                <strong>Hasil Pekerjaan:</strong> PIHAK KEDUA wajib menyerahkan
+                hasil [Nama Pekerjaan] kepada PIHAK PERTAMA.
+              </li>
+              <li>
+                <strong>Nilai Pekerjaan:</strong> Imbalan pekerjaan yang
+                diterima PIHAK KEDUA adalah sebesar [Nominal Pekerjaan],-
+                (Terbilang Nominal) sebagai Take Home Pay (THP) untuk
+                keseluruhan jangka waktu SPK ini. Ketentuan perpajakan dan/atau
+                potongan yang diwajibkan berdasarkan peraturan
+                perundang-undangan mengikuti ketentuan yang berlaku.
+              </li>
+              <li>
+                <strong>Jangka Waktu:</strong> Pelaksanaan pekerjaan berlaku
+                sejak tanggal [Jangka Waktu Pekerjaan].
+              </li>
+              <li>
+                <strong>Pelaksanaan Pekerjaan:</strong> PIHAK KEDUA melaksanakan
+                pekerjaan secara profesional, cermat, dan bertanggung jawab,
+                serta berkoordinasi dengan PIHAK PERTAMA dalam pelaksanaan
+                pekerjaan. Pekerjaan di luar ruang lingkup yang telah disepakati
+                memerlukan persetujuan Para Pihak.
+              </li>
+              <li>
+                <strong>Pembayaran:</strong> Pembayaran THP dilakukan melalui
+                transfer ke rekening Bank Mandiri nomor [Nomor Rekening] atas
+                nama [NAMA MITRA/TENAGA AHLI/VENDOR] dengan waktu dan tata cara
+                pembayaran mengikuti ketentuan yang disepakati Para Pihak.
+              </li>
+              <li>
+                <strong>Kerahasiaan dan Hasil Kerja:</strong> PIHAK KEDUA wajib
+                menjaga kerahasiaan data, dokumen, kode sumber, kredensial
+                akses, informasi teknis, dan informasi nonpublik yang diperoleh
+                selama pelaksanaan pekerjaan serta menggunakannya hanya untuk
+                kepentingan pekerjaan. Hasil kerja dan dokumen pendukung yang
+                dibuat dalam pelaksanaan pekerjaan berdasarkan SPK ini
+                diserahkan kepada PIHAK PERTAMA.
+              </li>
+              <li>
+                <strong>Keterlambatan dan Keadaan Kahar:</strong> Apabila
+                terdapat keterlambatan atau keadaan kahar yang memengaruhi
+                pelaksanaan pekerjaan, Para Pihak akan berkoordinasi untuk
+                menentukan tindak lanjut berdasarkan kesepakatan tertulis dengan
+                memperhatikan ketentuan yang berlaku.
+              </li>
+              <li>
+                <strong>Perubahan dan Pengakhiran:</strong> Perubahan ruang
+                lingkup, nilai pekerjaan, jangka waktu, atau ketentuan
+                pembayaran hanya berlaku apabila disepakati secara tertulis oleh
+                Para Pihak. Pengakhiran SPK dilakukan berdasarkan kesepakatan
+                tertulis Para Pihak dengan menyelesaikan hak dan kewajiban yang
+                masih ada.
+              </li>
+              <li>
+                <strong>Penyelesaian Perselisihan:</strong> Setiap perselisihan
+                yang timbul dari pelaksanaan SPK ini terlebih dahulu
+                diselesaikan secara musyawarah untuk mencapai mufakat oleh Para
+                Pihak.
+              </li>
+            </ol>
+
+            <!-- PARAGRAF PENUTUP -->
+            <p class="intro-text">
+              SPK ini merupakan kesepakatan Para Pihak dan dibuat dalam 2 (dua)
+              rangkap yang mempunyai kekuatan hukum yang sama. Dengan
+              menandatangani SPK ini, Para Pihak menyatakan telah membaca,
+              memahami, dan menyetujui ketentuan dalam SPK ini.
+            </p>
+
+            <!-- KOLOM TANDA TANGAN -->
+            <table class="signature-table">
+              <tr>
+                <td><strong>PIHAK PERTAMA,</strong></td>
+                <td><strong>PIHAK KEDUA,</strong></td>
+              </tr>
+              <tr>
+                <td class="signature-space"></td>
+                <td class="signature-space"></td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="signer-name"
+                    >[NAMA DIREKTUR/WAKIL PERUSAHAAN]</span
+                  ><br />
+                  DIREKTUR
+                </td>
+                <td>
+                  <span class="signer-name"
+                    >[NAMA MITRA/TENAGA AHLI ATAU VENDOR]</span
+                  ><br />
+                  MITRA
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

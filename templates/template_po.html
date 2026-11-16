@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Surat Pesanan</title>
+    <style>
+      /* Pengaturan Kertas Cetak A4 */
+      @page {
+        size: A4 portrait;
+        margin: 2cm 2cm 2cm 2cm;
+      }
+
+      body {
+        font-family: "Calibri", Arial, sans-serif;
+        font-size: 12px;
+        line-height: 1.4;
+        color: #000;
+        margin: 40px 50px;
+      }
+      /* Bagian Judul & Nomor di Tengah */
+      .doc-header {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      .doc-header h3 {
+        margin: 0 0 4px 0;
+        font-size: 15px;
+        font-weight: bold;
+      }
+      .doc-header p {
+        margin: 0;
+        font-weight: bold;
+      }
+
+      /* Tabel Metadata (Lampiran, Perihal, dll) */
+      .meta-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      .meta-table td {
+        padding: 2px 0;
+        vertical-align: top;
+      }
+      .meta-table td.label {
+        width: 110px;
+      }
+      .meta-table td.separator {
+        width: 15px;
+        text-align: center;
+      }
+
+      /* Konten Utama & Daftar Poin */
+      .content {
+        margin-top: 20px;
+        text-align: justify;
+      }
+      .content p {
+        margin: 0 0 10px 0;
+      }
+      .bullet-list {
+        margin: 10px 0 15px 0;
+        padding-left: 25px;
+      }
+      .bullet-list li {
+        margin-bottom: 6px;
+        padding-left: 8px;
+      }
+
+      /* Bagian Tanda Tangan & Lampiran */
+      .signature-section {
+        margin-top: 35px;
+        text-align: left;
+        width: 280px;
+      }
+      .signature-section p {
+        margin: 0;
+      }
+      .signature-space {
+        height: 65px;
+      }
+      .page-break {
+        page-break-before: always;
+        margin-top: 60px;
+      }
+      .item-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .item-table,
+      .item-table th,
+      .item-table td {
+        border: 1px solid #000;
+      }
+      .item-table th,
+      .item-table td {
+        padding: 8px;
+        text-align: center;
+      }
+      .item-table th {
+        background-color: #f2f2f2;
+      }
+      .item-table td.text-left {
+        text-align: left;
+      }
+      .item-table td.text-right {
+        text-align: right;
+      }
+      .clear {
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- SURAT PESANAN -->
+    <div class="doc-header">
+      <h3>SURAT PESANAN</h3>
+      <p>Nomor : [Nomor Surat Pesanan]</p>
+    </div>
+
+    <p>[Kota], [Tanggal Surat]</p>
+
+    <p>
+      Kepada Yth,<br />
+      <strong>Pimpinan [Nama Penyedia / Perusahaan]</strong><br />
+      [Alamat Penyedia]
+    </p>
+
+    <table class="meta-table">
+      <tr>
+        <td class="label">Lampiran</td>
+        <td class="separator">:</td>
+        <td>[Jumlah Lampiran, contoh: 1 (satu) berkas]</td>
+      </tr>
+      <tr>
+        <td class="label">Perihal</td>
+        <td class="separator">:</td>
+        <td>Surat Pesanan [Nama Pekerjaan / Pengadaan]</td>
+      </tr>
+    </table>
+
+    <div class="content">
+      <p>Dengan hormat,</p>
+      <p>Menunjuk:</p>
+      <p>
+        Berita Acara Klarifikasi dan Negosiasi Harga tanggal [Tanggal BAKN]
+        tentang [Nama Pekerjaan / Pengadaan].
+      </p>
+      <p>
+        Sehubungan dengan hal tersebut, [Nama Perusahaan / Instansi Pemesan]
+        menerbitkan Surat Pesanan kepada [Nama Penyedia / Perusahaan] untuk
+        melaksanakan pekerjaan “[Nama Pekerjaan / Pengadaan]” dengan ketentuan
+        sebagai berikut:
+      </p>
+
+      <ul class="bullet-list">
+        <li>
+          <strong>Jumlah Harga Pekerjaan:</strong> Rp[Jumlah Harga Total],-
+          ([Terbilang Total Harga]), sesuai nilai kesepakatan pada Berita Acara
+          Klarifikasi dan Negosiasi Harga. [Catatan Perlakuan Pajak].
+        </li>
+        <li>
+          <strong>Spesifikasi Teknis dan Volume:</strong> sebagaimana rincian
+          pekerjaan pada lampiran Surat Pesanan ini.
+        </li>
+        <li>
+          <strong>Waktu Pelaksanaan:</strong> [Jumlah Hari] ([Terbilang Hari])
+          hari kalender, terhitung sejak tanggal Surat Pesanan.
+        </li>
+        <li>
+          <strong>Skema dan Rekening Pembayaran:</strong> Pembayaran dilakukan
+          melalui transfer bank ke rekening [Nomor Rekening] atas nama [Nama
+          Pemilik Rekening] pada [Nama Bank], setelah pekerjaan selesai dan
+          dibuktikan dengan Berita Acara Serah Terima (BAST) yang telah
+          ditandatangani oleh kedua belah pihak.
+        </li>
+        <li>
+          <strong>Kewajiban Pelaksanaan:</strong> [Nama Penyedia / Perusahaan]
+          melaksanakan pekerjaan sesuai ruang lingkup, volume, dan jangka waktu
+          yang disepakati. Penyelesaian dan serah terima pekerjaan dituangkan
+          dalam BAST yang ditandatangani kedua belah pihak.
+        </li>
+        <li>
+          <strong>Persyaratan Penagihan:</strong> pembayaran diproses setelah
+          unit keuangan [Nama Perusahaan / Instansi Pemesan] menerima surat
+          tagihan, kuitansi bermeterai cukup, invoice, faktur pajak, BAST, serta
+          dokumen lain yang dipersyaratkan.
+        </li>
+      </ul>
+
+      <p>
+        Demikian Surat Pesanan ini disampaikan untuk dilaksanakan sebagaimana
+        mestinya. Atas perhatian dan kerja samanya kami ucapkan terima kasih.
+      </p>
+    </div>
+
+    <div class="signature-section">
+      <p>Hormat Kami,</p>
+      <p>a.n. [Nama Perusahaan]</p>
+      <p>Direktur</p>
+      <div class="signature-space"></div>
+      <p><strong>[Nama Direktur]</strong></p>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="page-break"></div>
+
+    <!-- LAMPIRAN SURAT PESANAN -->
+    <div class="doc-header">
+      <h3>LAMPIRAN SURAT PESANAN</h3>
+    </div>
+
+    <table class="meta-table">
+      <tr>
+        <td class="label">Nomor</td>
+        <td class="separator">:</td>
+        <td>[Nomor Surat Pesanan]</td>
+      </tr>
+      <tr>
+        <td class="label">Tanggal</td>
+        <td class="separator">:</td>
+        <td>[Tanggal Surat]</td>
+      </tr>
+      <tr>
+        <td class="label">Perihal</td>
+        <td class="separator">:</td>
+        <td>Rincian Pekerjaan [Nama Pekerjaan / Pengadaan]</td>
+      </tr>
+    </table>
+
+    <br />
+
+    <table class="item-table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Uraian Barang/Jasa</th>
+          <th>Qty</th>
+          <th>Freq</th>
+          <th>Satuan</th>
+          <th>Harga Satuan (Rp)</th>
+          <th>Jumlah (Rp)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td class="text-left">[Deskripsi Pekerjaan 1]</td>
+          <td>[Qty]</td>
+          <td>[Freq]</td>
+          <td>[Satuan]</td>
+          <td class="text-right">[Harga Satuan]</td>
+          <td class="text-right">[Jumlah 1]</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td class="text-left">[Deskripsi Pekerjaan 2]</td>
+          <td>[Qty]</td>
+          <td>[Freq]</td>
+          <td>[Satuan]</td>
+          <td class="text-right">[Harga Satuan]</td>
+          <td class="text-right">[Jumlah 2]</td>
+        </tr>
+        <tr>
+          <td colspan="6" style="text-align: right">
+            <strong>TOTAL NILAI KESEPAKATAN</strong>
+          </td>
+          <td class="text-right"><strong>[Total Harga]</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Terbilang:</strong> [Terbilang Total Harga Dalam Kata-Kata]</p>
+
+    <div class="signature-section">
+      <p>Hormat Kami,</p>
+      <p>a.n. [Nama Perusahaan]</p>
+      <p>Direktur</p>
+      <div class="signature-space"></div>
+      <p><strong>[Nama Direktur]</strong></p>
+    </div>
+  </body>
+</html>

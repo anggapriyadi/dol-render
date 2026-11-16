@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Surat Permintaan Penawaran Harga (SPPH)</title>
+    <style>
+      @page {
+        size: A4 portrait;
+        margin: 2.5cm 2.5cm 2.5cm 2.5cm;
+      }
+      body {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 11pt;
+        line-height: 1.5;
+        color: #000;
+      }
+      .meta-table {
+        width: 100%;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+      }
+      .meta-table td {
+        vertical-align: top;
+        padding: 2px 0;
+      }
+      .w-label {
+        width: 80px;
+      }
+      .w-separator {
+        width: 15px;
+        text-align: center;
+      }
+
+      .date-right {
+        text-align: left;
+        margin-bottom: 20px;
+      }
+      .recipient-block {
+        margin-bottom: 25px;
+      }
+      .recipient-block .to {
+        margin-bottom: 5px;
+      }
+      .salutation {
+        margin-bottom: 15px;
+      }
+      .opening-text {
+        text-align: justify;
+        margin-bottom: 20px;
+      }
+
+      /* Gaya Tabel Dinamis BoQ */
+      .boq-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+      .boq-table th {
+        font-weight: bold;
+        text-align: center;
+        border: 1px solid #000;
+        padding: 3px 3px;
+        vertical-align: middle;
+      }
+      .boq-table td {
+        border: 1px solid #000;
+        padding: 3px;
+        vertical-align: middle;
+        text-align: center;
+      }
+      .text-center {
+        text-align: center;
+      }
+      .text-left {
+        text-align: left !important;
+        padding-left: 5px !important;
+      }
+
+      .closing-text {
+        text-align: justify;
+        margin-top: 20px;
+        margin-bottom: 40px;
+      }
+
+      /* Area Tanda Tangan */
+      .signature-section {
+        width: 100%;
+        margin-top: 30px;
+        page-break-inside: avoid;
+      }
+      .signature-wrapper {
+        float: left;
+        width: 280px;
+      }
+      .spacer {
+        height: 90px;
+      }
+      .signee-name {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Nomor Surat -->
+    <table class="meta-table">
+      <tr>
+        <td class="w-label">Nomor</td>
+        <td class="w-separator">:</td>
+        <td>
+          {{ $('NocoDB: Create a row untuk Nomor
+          Surat').pairedItem().json.fields.nomor_spph }}
+        </td>
+      </tr>
+    </table>
+
+    <!-- Tanggal Surat (Dibuat otomatis oleh n8n) -->
+    <div class="date-right">
+      Bandung, {{ new Date($('Get a
+      row').item.json.fields.tanggal_surat).toLocaleDateString('id-ID', { day:
+      '2-digit', month: 'long', year: 'numeric' }) }}
+    </div>
+
+    <!-- Informasi Vendor Tujuan -->
+    <div class="recipient-block">
+      <div class="to">Kepada Yth.</div>
+      <div>{{ $json.vendor_name }}</div>
+    </div>
+
+    <!-- Perihal Proyek -->
+    <table class="meta-table">
+      <tr>
+        <td class="w-label">Perihal</td>
+        <td class="w-separator">:</td>
+        <td>
+          Permintaan Penawaran Harga {{ $('Get a
+          row').item.json.fields.nama_pekerjaan }}
+        </td>
+      </tr>
+    </table>
+
+    <!-- Salam Pembuka -->
+    <div class="salutation">Dengan Hormat,</div>
+
+    <!-- Teks Pembuka -->
+    <div class="opening-text">
+      Sehubungan dengan adanya pekerjaan
+      <strong>{{ $('Get a row').item.json.fields.nama_pekerjaan }}</strong>,
+      kami meminta Penawaran Harga untuk pengadaan yang dimaksud. Adapun
+      kebutuhan pekerjaan tersebut adalah sebagai berikut:
+    </div>
+
+    <!-- TABEL UTAMA BOQ DINAMIS -->
+    <table class="boq-table">
+      <thead>
+        <tr>
+          <th style="width: 8%">No</th>
+          <th style="width: 62%">Deskripsi</th>
+          <th style="width: 15%">Qty</th>
+          <th style="width: 15%">Satuan</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ $json.html_table_rows }}
+      </tbody>
+    </table>
+
+    <!-- Teks Penutup -->
+    <div class="closing-text">
+      Surat penawaran harga agar ditujukan kepada Pimpinan {{ Nama_Perusahaan
+      }}. Surat penawaran Saudara diharapkan dapat kami terima paling lambat 7
+      (tujuh) hari kerja sejak surat ini diterbitkan.
+      <br /><br />
+      Demikian permohonan kami, atas kerjasamanya yang baik diucapkan terima
+      kasih.
+    </div>
+
+    <!-- Blok Tanda Tangan Manajemen -->
+    <div class="signature-section">
+      <div class="signature-wrapper">
+        <div>Hormat kami,</div>
+        <div>{{ Nama_Perusahaan }}</div>
+        <div>{{ Manajer_Divisi }}</div>
+        <div class="spacer"></div>
+        <div class="signee-name">{{ Nama_Manajer_Divisi}}</div>
+      </div>
+    </div>
+  </body>
+</html>
